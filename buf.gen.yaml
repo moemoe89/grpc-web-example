@@ -1,0 +1,22 @@
+version: v1
+plugins:
+  - name: go
+    out: files/go
+    opt: paths=source_relative
+  - name: go-grpc
+    out: files/go
+    opt:
+      - paths=source_relative
+      - require_unimplemented_servers=false
+  - name: js
+    out: files/web/
+    opt:
+      - import_style=commonjs,binary
+    strategy: directory
+  - name: grpc-web
+    out: files/web/
+    path: protoc-gen-grpc-web
+    strategy: directory
+    opt:
+      - import_style=typescript
+      - mode=grpcwebtext
